@@ -46,7 +46,7 @@ public class TransitionView extends FrameLayout {
         addViewAndTransition(view, anim, listener);
     }
 
-    private void addViewAndTransition(View newView, TransitionAnimator anim, final TransitionListener listener) {
+    private void addViewAndTransition(View newView, final TransitionAnimator anim, final TransitionListener listener) {
         final View oldView = getChildAt(0);
 
         // If has previous view, set new view to gone.
@@ -62,8 +62,8 @@ public class TransitionView extends FrameLayout {
             anim.applyTransition(oldView, newView, new TransitionAnimator.AnimatorListener() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
                     removeView(oldView);
+                    anim.removeListener(this);
                     notifyFinish(listener);
                 }
             });

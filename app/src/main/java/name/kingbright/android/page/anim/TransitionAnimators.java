@@ -39,11 +39,18 @@ public class TransitionAnimators {
      */
     public static final String PROPERTY_ALPHA_NEW = "newAlpha";
 
-    public static final class LeftInRightOutAnim extends TransitionAnimator {
+
+    public static final TransitionAnimator LEFT_IN_RIGHT_OUT = new LeftInRightOutAnim();
+    public static final TransitionAnimator RIGHT_IN_LEFT_OUT = new RightInLeftOutAnim();
+    public static final TransitionAnimator TOP_IN_BOTTOM_OUT = new TopInBottomOutAnim();
+    public static final TransitionAnimator BOTTOM_IN_UP_OUT = new BottomInTopOutAnim();
+    public static final TransitionAnimator FADE_IN_FADE_OUT = new FadeInFadeOutAnim();
+
+    private static class LeftInRightOutAnim extends TransitionAnimator {
 
         @Override
         protected void setStartProperty(View oldView, View newView) {
-            newView.setX(oldView.getWidth());
+            newView.setX(-oldView.getWidth());
             newView.setY(oldView.getY());
         }
 
@@ -67,7 +74,7 @@ public class TransitionAnimators {
         }
     }
 
-    public static final class RightInLeftOutAnim extends TransitionAnimator {
+    private static class RightInLeftOutAnim extends TransitionAnimator {
 
         @Override
         protected void setStartProperty(View oldView, View newView) {
@@ -95,7 +102,7 @@ public class TransitionAnimators {
         }
     }
 
-    public static final class BottomInTopOutAnim extends TransitionAnimator {
+    private static class BottomInTopOutAnim extends TransitionAnimator {
 
         @Override
         protected void setStartProperty(View oldView, View newView) {
@@ -124,7 +131,7 @@ public class TransitionAnimators {
 
     }
 
-    public static final class TopInBottomOutAnim extends TransitionAnimator {
+    private static class TopInBottomOutAnim extends TransitionAnimator {
 
         @Override
         protected void setStartProperty(View oldView, View newView) {
@@ -152,7 +159,7 @@ public class TransitionAnimators {
         }
     }
 
-    public static final class FadeInFadeOutAnim extends TransitionAnimator {
+    private static class FadeInFadeOutAnim extends TransitionAnimator {
 
         @Override
         protected void setStartProperty(View oldView, View newView) {

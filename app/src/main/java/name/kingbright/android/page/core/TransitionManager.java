@@ -11,7 +11,7 @@ import name.kingbright.android.page.anim.TransitionView;
  * @author Jin Liang
  * @since 16/6/20
  */
-class TransitionManager implements Lifecycle, TransitionView.TransitionListener, TransitionView.RemoveListener {
+class TransitionManager implements Lifecycle, TransitionView.RemoveListener, TransitionView.TransitionListener {
     private static final String TAG = "TransitionManager";
 
     private Page mShowingPage;
@@ -48,6 +48,11 @@ class TransitionManager implements Lifecycle, TransitionView.TransitionListener,
             Log.d(TAG, "No more page can be popped");
             return false;
         }
+        if (mContainer.isInTransition()) {
+            Log.d(TAG, "back() Is in transition");
+            return true;
+        }
+        Log.d(TAG, "back()");
         if (mRecordStack.size() == 1) {
             PageRecord record = mRecordStack.peek();
             Page page = record.instance;
@@ -65,25 +70,20 @@ class TransitionManager implements Lifecycle, TransitionView.TransitionListener,
     }
 
     public void show(Page page, boolean back) {
+        if (mContainer.isInTransition()) {
+            Log.d(TAG, "Show() Is in transition");
+            return;
+        }
+        Log.d(TAG, "show() do transition now");
         mShowingPage = page;
         mIsBack = back;
-        mContainer.doTransition(page.getView(), back ? page.getBackTransitionAnimator() : page
+        mContainer.doTransition(mShowingPage.getView(), back ? page.getBackTransitionAnimator() : page
                 .getTransitionAnimator(), this);
     }
 
     @Override
-    public void onRemoveFinish() {
-        PageRecord record = mRecordStack.pop();
-        if (record != null) {
-            Page page = record.instance;
-            page.onPause();
-            page.onStop();
-            page.onDestroy();
-        }
-    }
-
-    @Override
     public void onTransitionFinish() {
+        Log.d(TAG, "onTransitionFinish()");
         PageRecord record;
         if (mIsBack) {
             record = mRecordStack.pop();
@@ -104,6 +104,17 @@ class TransitionManager implements Lifecycle, TransitionView.TransitionListener,
         }
         if (!mIsBack) {
             mRecordStack.push(mShowingPage);
+        }
+    }
+
+    @Override
+    public void onRemoveFinish() {
+        PageRecord record = mRecordStack.pop();
+        if (record != null) {
+            Page page = record.instance;
+            page.onPause();
+            page.onStop();
+            page.onDestroy();
         }
     }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import name.kingbright.android.page.anim.Animatable;
 import name.kingbright.android.page.anim.TransitionAnimator;
+import name.kingbright.android.page.anim.TransitionAnimators;
 
 /**
  * Lifecycle of a page is as following:
@@ -75,12 +76,12 @@ public abstract class Page implements Lifecycle, Animatable {
 
     @Override
     public TransitionAnimator getTransitionAnimator() {
-        return null;
+        return TransitionAnimators.LEFT_IN_RIGHT_OUT;
     }
 
     @Override
     public TransitionAnimator getBackTransitionAnimator() {
-        return null;
+        return TransitionAnimators.RIGHT_IN_LEFT_OUT;
     }
 
     public PageManager getPageManager() {
