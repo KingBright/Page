@@ -3,7 +3,6 @@ package name.kingbright.android.page.example;
 import android.app.Activity;
 import android.os.Bundle;
 
-import name.kingbright.android.page.R;
 import name.kingbright.android.page.anim.TransitionView;
 import name.kingbright.android.page.core.PageManager;
 

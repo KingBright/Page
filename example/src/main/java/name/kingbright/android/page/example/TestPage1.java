@@ -2,7 +2,6 @@ package name.kingbright.android.page.example;
 
 import android.view.View;
 
-import name.kingbright.android.page.R;
 import name.kingbright.android.page.core.Page;
 
 /**

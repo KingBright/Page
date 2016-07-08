@@ -1,10 +1,9 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId "name.kingbright.android.page"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
