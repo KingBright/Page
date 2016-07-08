@@ -3,7 +3,9 @@ A page management library with ValueAnimator in View
 
 ## Features
 
-1. Activity-like launch mode support by @KingBright
-2. Intent and IntentFilter support by @KingBright
-3. Realtime transition animation by @KingBright
-4. Page router support.
+- Start page & back. [DONE] 
+- Realtime transition animation. [DONE]
+- Activity-like launch mode. [TODO]
+- Activity-like lifecycle. [TODO]
+- Key/Event dispatch. [TODO]
+- onSaveInstanceState/onRestoreInstanceState implementation. [TODO]
