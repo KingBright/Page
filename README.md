@@ -1,5 +1,5 @@
 # Page
-A page management library with ValueAnimator in View
+A page management library with ValueAnimator for view transition.
 
 ## Features
 
