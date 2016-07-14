@@ -3,9 +3,9 @@ A page management library with ValueAnimator for view transition.
 
 ## Features
 
-- Start page & back. [DONE] 
-- Realtime transition animation. [DONE]
-- Activity-like launch mode. [TODO]
-- Activity-like lifecycle. [TODO]
-- Key/Event dispatch. [TODO]
-- onSaveInstanceState/onRestoreInstanceState implementation. [TODO]
+- [X] Start page & back.
+- [X] Realtime transition animation.
+- [ ] Activity-like launch mode.
+- [ ] Activity-like lifecycle.
+- [ ] Key/Event dispatch.
+- [ ] onSaveInstanceState/onRestoreInstanceState implementation.
