@@ -1,5 +1,5 @@
 # Page
-A page management library with ValueAnimator for view transition.
+A page management library with ValueAnimator for view transition, aiming to replace Fragment.
 
 ## Features
 
